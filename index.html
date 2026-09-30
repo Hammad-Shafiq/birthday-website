@@ -1,0 +1,549 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<meta name="theme-color" content="#080808">
+
+<title>Open This 😈</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background:
+    radial-gradient(circle at top, #25102d 0%, #090609 45%, #000 100%);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+.page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  width: min(100%, 520px);
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+.intro {
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.intro.hidden {
+  opacity: 0;
+  transform: scale(0.92);
+  pointer-events: none;
+}
+
+.emoji {
+  font-size: clamp(55px, 16vw, 90px);
+  margin-bottom: 18px;
+  animation: float 2.5s ease-in-out infinite;
+}
+
+h1 {
+  font-size: clamp(30px, 8vw, 52px);
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+
+.subtitle {
+  color: #cfcfcf;
+  font-size: clamp(15px, 4vw, 18px);
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+.open-btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 17px 34px;
+  min-width: 210px;
+
+  background: linear-gradient(
+    135deg,
+    #ff2d55,
+    #ff0055,
+    #9b00ff
+  );
+
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 35px rgba(255, 0, 90, 0.35);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.open-btn:active {
+  transform: scale(0.95);
+}
+
+.open-btn:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 16px 45px rgba(255, 0, 90, 0.5);
+}
+
+.loading {
+  display: none;
+  margin-top: 22px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.loading.show {
+  display: block;
+}
+
+.loader {
+  width: 34px;
+  height: 34px;
+  margin: 0 auto 12px;
+
+  border: 3px solid rgba(255,255,255,0.15);
+  border-top-color: #ff2d55;
+
+  border-radius: 50%;
+
+  animation: spin 0.8s linear infinite;
+}
+
+/* IMAGE REVEAL */
+
+.reveal {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 22px;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: scale(0.7);
+
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(.16,1,.3,1),
+    visibility 1s ease;
+
+  z-index: 10;
+}
+
+.reveal.show {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+}
+
+.image-card {
+  width: min(92vw, 500px);
+
+  position: relative;
+
+  border-radius: 24px;
+  padding: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff2d55,
+      #ff7a00,
+      #a100ff,
+      #00d4ff
+    );
+
+  box-shadow:
+    0 25px 80px rgba(255, 0, 90, 0.45);
+}
+
+.image-card img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+  max-height: 75vh;
+
+  object-fit: contain;
+
+  border-radius: 18px;
+  background: #000;
+}
+
+.prank-text {
+  margin-top: 18px;
+
+  font-size: clamp(25px, 7vw, 42px);
+  font-weight: 900;
+
+  text-shadow:
+    0 4px 20px rgba(0,0,0,0.8);
+
+  animation: pop 0.8s 0.3s both;
+}
+
+/* PARTICLES */
+
+.particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.particle {
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: white;
+
+  animation: burst 1.3s ease-out forwards;
+}
+
+/* ANIMATIONS */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  70% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes burst {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform:
+      translate(
+        calc((var(--x) - 50vw) * 1.3),
+        calc((var(--y) - 50vh) * 1.3)
+      )
+      scale(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 18px;
+  }
+
+  .open-btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .image-card {
+    width: 94vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="page">
+
+  <div class="container">
+
+    <section class="intro" id="intro">
+
+      <div class="emoji">😈</div>
+
+      <h1>I've Got Something For You...</h1>
+
+      <p class="subtitle">
+        Just press the button. Trust me. 👀
+      </p>
+
+      <button
+        class="open-btn"
+        id="openButton"
+        type="button"
+      >
+        Open Surprise 😈
+      </button>
+
+      <div class="loading" id="loading">
+        <div class="loader"></div>
+        Something is happening... 👀
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- IMAGE REVEAL -->
+
+  <section class="reveal" id="reveal">
+
+    <div>
+
+      <div class="image-card">
+        <img
+          id="prankImage"
+          src="prank-image.jpg"
+          alt="Surprise"
+        >
+      </div>
+
+      <div class="prank-text">
+        😂 GOT YOU!
+      </div>
+
+    </div>
+
+  </section>
+
+  <div
+    class="particles"
+    id="particles"
+  ></div>
+
+</main>
+
+<!-- PRANK MUSIC -->
+
+<audio
+  id="prankMusic"
+  preload="auto"
+  src="prank.mp3"
+></audio>
+
+<script>
+const openButton = document.getElementById("openButton");
+const intro = document.getElementById("intro");
+const loading = document.getElementById("loading");
+const reveal = document.getElementById("reveal");
+const music = document.getElementById("prankMusic");
+const particles = document.getElementById("particles");
+
+let started = false;
+
+openButton.addEventListener("click", async () => {
+
+  if (started) return;
+
+  started = true;
+
+  /*
+   * IMPORTANT:
+   * This click is the user's interaction.
+   * The browser therefore allows us to start
+   * audible audio here.
+   */
+
+  intro.classList.add("hidden");
+  loading.classList.add("show");
+
+  music.currentTime = 0;
+
+  try {
+
+    await music.play();
+
+  } catch (error) {
+
+    /*
+     * If the browser still blocks playback,
+     * give the user another interaction option.
+     */
+
+    loading.innerHTML =
+      "Tap anywhere to start the surprise 👀";
+
+    started = false;
+
+    document.body.addEventListener(
+      "click",
+      retryMusic,
+      { once: true }
+    );
+
+    return;
+  }
+
+  /*
+   * IMAGE DOES NOT APPEAR HERE.
+   *
+   * It waits until the music has completely finished.
+   */
+
+  music.addEventListener(
+    "ended",
+    revealImage,
+    { once: true }
+  );
+
+});
+
+
+async function retryMusic() {
+
+  try {
+
+    await music.play();
+
+    intro.classList.add("hidden");
+    loading.innerHTML =
+      '<div class="loader"></div>Something is happening... 👀';
+
+    music.addEventListener(
+      "ended",
+      revealImage,
+      { once: true }
+    );
+
+  } catch (error) {
+
+    loading.innerHTML =
+      "Please tap again 👀";
+
+  }
+
+}
+
+
+function revealImage() {
+
+  loading.classList.remove("show");
+
+  createParticles();
+
+  setTimeout(() => {
+
+    reveal.classList.add("show");
+
+  }, 350);
+
+}
+
+
+function createParticles() {
+
+  particles.innerHTML = "";
+
+  const count = 55;
+
+  for (let i = 0; i < count; i++) {
+
+    const particle =
+      document.createElement("span");
+
+    particle.className = "particle";
+
+    particle.style.left =
+      "50vw";
+
+    particle.style.top =
+      "50vh";
+
+    particle.style.setProperty(
+      "--x",
+      Math.random() * 100 + "vw"
+    );
+
+    particle.style.setProperty(
+      "--y",
+      Math.random() * 100 + "vh"
+    );
+
+    particle.style.animationDelay =
+      Math.random() * 0.25 + "s";
+
+    particle.style.width =
+      (Math.random() * 7 + 4) + "px";
+
+    particle.style.height =
+      particle.style.width;
+
+    particles.appendChild(particle);
+
+  }
+
+}
+</script>
+
+</body>
+</html>
