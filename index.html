@@ -11,9 +11,10 @@
 
 <meta name="theme-color" content="#080808">
 
-<title>Open This 😈</title>
+<title>For You ❤️</title>
 
 <style>
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -29,27 +30,44 @@ body {
 body {
   min-height: 100vh;
   min-height: 100dvh;
+
   background:
-    radial-gradient(circle at top, #25102d 0%, #090609 45%, #000 100%);
+    radial-gradient(
+      circle at top,
+      #25102d 0%,
+      #090609 45%,
+      #000 100%
+    );
+
   color: #fff;
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
   overflow-x: hidden;
 }
 
 .page {
   min-height: 100vh;
   min-height: 100dvh;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding: 24px;
+
   position: relative;
   overflow: hidden;
 }
 
 .container {
   width: min(100%, 520px);
+
   text-align: center;
+
   position: relative;
   z-index: 5;
 }
@@ -68,43 +86,59 @@ body {
 
 .emoji {
   font-size: clamp(55px, 16vw, 90px);
+
   margin-bottom: 18px;
-  animation: float 2.5s ease-in-out infinite;
+
+  animation:
+    float 2.5s ease-in-out infinite;
 }
 
 h1 {
   font-size: clamp(30px, 8vw, 52px);
+
   line-height: 1.05;
+
   margin-bottom: 14px;
 }
 
 .subtitle {
   color: #cfcfcf;
+
   font-size: clamp(15px, 4vw, 18px);
+
   line-height: 1.5;
+
   margin-bottom: 30px;
 }
 
 .open-btn {
   border: 0;
+
   border-radius: 999px;
+
   padding: 17px 34px;
+
   min-width: 210px;
 
-  background: linear-gradient(
-    135deg,
-    #ff2d55,
-    #ff0055,
-    #9b00ff
-  );
+  background:
+    linear-gradient(
+      135deg,
+      #ff2d55,
+      #ff0055,
+      #9b00ff
+    );
 
   color: white;
+
   font-size: 17px;
+
   font-weight: 700;
+
   cursor: pointer;
 
   box-shadow:
-    0 12px 35px rgba(255, 0, 90, 0.35);
+    0 12px 35px
+    rgba(255, 0, 90, 0.35);
 
   transition:
     transform 0.2s ease,
@@ -117,14 +151,19 @@ h1 {
 
 .open-btn:hover {
   transform: translateY(-2px);
+
   box-shadow:
-    0 16px 45px rgba(255, 0, 90, 0.5);
+    0 16px 45px
+    rgba(255, 0, 90, 0.5);
 }
 
 .loading {
   display: none;
+
   margin-top: 22px;
+
   color: #aaa;
+
   font-size: 14px;
 }
 
@@ -135,29 +174,41 @@ h1 {
 .loader {
   width: 34px;
   height: 34px;
-  margin: 0 auto 12px;
 
-  border: 3px solid rgba(255,255,255,0.15);
+  margin:
+    0 auto 12px;
+
+  border:
+    3px solid
+    rgba(255,255,255,0.15);
+
   border-top-color: #ff2d55;
 
   border-radius: 50%;
 
-  animation: spin 0.8s linear infinite;
+  animation:
+    spin 0.8s linear infinite;
 }
 
-/* IMAGE REVEAL */
+
+/* =========================================
+   IMAGE REVEAL
+========================================= */
 
 .reveal {
   position: absolute;
+
   inset: 0;
 
   display: flex;
+
   align-items: center;
   justify-content: center;
 
   padding: 22px;
 
   opacity: 0;
+
   visibility: hidden;
 
   transform: scale(0.7);
@@ -172,7 +223,9 @@ h1 {
 
 .reveal.show {
   opacity: 1;
+
   visibility: visible;
+
   transform: scale(1);
 }
 
@@ -182,6 +235,7 @@ h1 {
   position: relative;
 
   border-radius: 24px;
+
   padding: 8px;
 
   background:
@@ -194,40 +248,54 @@ h1 {
     );
 
   box-shadow:
-    0 25px 80px rgba(255, 0, 90, 0.45);
+    0 25px 80px
+    rgba(255, 0, 90, 0.45);
 }
 
 .image-card img {
   display: block;
 
   width: 100%;
+
   height: auto;
+
   max-height: 75vh;
 
   object-fit: contain;
 
   border-radius: 18px;
+
   background: #000;
 }
 
 .prank-text {
   margin-top: 18px;
 
-  font-size: clamp(25px, 7vw, 42px);
+  font-size:
+    clamp(25px, 7vw, 42px);
+
   font-weight: 900;
 
   text-shadow:
-    0 4px 20px rgba(0,0,0,0.8);
+    0 4px 20px
+    rgba(0,0,0,0.8);
 
-  animation: pop 0.8s 0.3s both;
+  animation:
+    pop 0.8s 0.3s both;
 }
 
-/* PARTICLES */
+
+/* =========================================
+   PARTICLES
+========================================= */
 
 .particles {
   position: fixed;
+
   inset: 0;
+
   pointer-events: none;
+
   z-index: 20;
 }
 
@@ -241,28 +309,38 @@ h1 {
 
   background: white;
 
-  animation: burst 1.3s ease-out forwards;
+  animation:
+    burst 1.3s ease-out forwards;
 }
 
-/* ANIMATIONS */
+
+/* =========================================
+   ANIMATIONS
+========================================= */
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
 
   50% {
     transform: translateY(-10px);
   }
+
 }
 
 @keyframes spin {
+
   to {
     transform: rotate(360deg);
   }
+
 }
 
 @keyframes pop {
+
   0% {
     opacity: 0;
     transform: scale(0.5);
@@ -276,16 +354,22 @@ h1 {
     opacity: 1;
     transform: scale(1);
   }
+
 }
 
 @keyframes burst {
+
   0% {
     opacity: 1;
-    transform: translate(0, 0) scale(1);
+
+    transform:
+      translate(0, 0)
+      scale(1);
   }
 
   100% {
     opacity: 0;
+
     transform:
       translate(
         calc((var(--x) - 50vw) * 1.3),
@@ -293,33 +377,55 @@ h1 {
       )
       scale(0);
   }
+
 }
 
+
+/* =========================================
+   MOBILE
+========================================= */
+
 @media (max-width: 480px) {
+
   .page {
     padding: 18px;
   }
 
   .open-btn {
     width: 100%;
+
     max-width: 300px;
   }
 
   .image-card {
     width: 94vw;
   }
+
 }
 
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
+
+    animation-duration:
+      0.01ms !important;
+
+    transition-duration:
+      0.01ms !important;
   }
+
 }
+
 </style>
 </head>
+
 
 <body>
 
@@ -327,11 +433,18 @@ h1 {
 
   <div class="container">
 
-    <section class="intro" id="intro">
+    <section
+      class="intro"
+      id="intro"
+    >
 
-      <div class="emoji">😈</div>
+      <div class="emoji">
+        😈
+      </div>
 
-      <h1>I've Got Something For You...</h1>
+      <h1>
+        I've Got Something For You...
+      </h1>
 
       <p class="subtitle">
         Just press the button. Trust me. 👀
@@ -345,27 +458,39 @@ h1 {
         Open Surprise 😈
       </button>
 
-      <div class="loading" id="loading">
+      <div
+        class="loading"
+        id="loading"
+      >
+
         <div class="loader"></div>
+
         Something is happening... 👀
+
       </div>
 
     </section>
 
   </div>
 
+
   <!-- IMAGE REVEAL -->
 
-  <section class="reveal" id="reveal">
+  <section
+    class="reveal"
+    id="reveal"
+  >
 
     <div>
 
       <div class="image-card">
+
         <img
           id="prankImage"
           src="prank-image.jpg"
           alt="Surprise"
         >
+
       </div>
 
       <div class="prank-text">
@@ -376,6 +501,9 @@ h1 {
 
   </section>
 
+
+  <!-- PARTICLES -->
+
   <div
     class="particles"
     id="particles"
@@ -383,81 +511,116 @@ h1 {
 
 </main>
 
+
 <!-- PRANK MUSIC -->
 
 <audio
   id="prankMusic"
   preload="auto"
-  src="prank.mp3"
+  src="music.mp3"
 ></audio>
 
+
+<!-- =====================================
+     JAVASCRIPT
+===================================== -->
+
 <script>
-const openButton = document.getElementById("openButton");
-const intro = document.getElementById("intro");
-const loading = document.getElementById("loading");
-const reveal = document.getElementById("reveal");
-const music = document.getElementById("prankMusic");
-const particles = document.getElementById("particles");
+
+const openButton =
+  document.getElementById("openButton");
+
+const intro =
+  document.getElementById("intro");
+
+const loading =
+  document.getElementById("loading");
+
+const reveal =
+  document.getElementById("reveal");
+
+const music =
+  document.getElementById("prankMusic");
+
+const particles =
+  document.getElementById("particles");
+
 
 let started = false;
 
-openButton.addEventListener("click", async () => {
 
-  if (started) return;
+/* =========================================
+   OPEN SURPRISE
+========================================= */
 
-  started = true;
+openButton.addEventListener(
+  "click",
+  async () => {
 
-  /*
-   * IMPORTANT:
-   * This click is the user's interaction.
-   * The browser therefore allows us to start
-   * audible audio here.
-   */
+    if (started) return;
 
-  intro.classList.add("hidden");
-  loading.classList.add("show");
+    started = true;
 
-  music.currentTime = 0;
 
-  try {
+    /* Hide intro */
 
-    await music.play();
+    intro.classList.add("hidden");
 
-  } catch (error) {
+    loading.classList.add("show");
 
-    /*
-     * If the browser still blocks playback,
-     * give the user another interaction option.
-     */
 
-    loading.innerHTML =
-      "Tap anywhere to start the surprise 👀";
+    /* Start music */
 
-    started = false;
+    music.currentTime = 0;
 
-    document.body.addEventListener(
-      "click",
-      retryMusic,
-      { once: true }
-    );
 
-    return;
+    try {
+
+      await music.play();
+
+
+      /*
+       * MUSIC HAS STARTED.
+       *
+       * Wait 3 seconds.
+       */
+
+      setTimeout(
+        () => {
+
+          revealImage();
+
+        },
+        3000
+      );
+
+
+    } catch (error) {
+
+      loading.innerHTML =
+        "Tap anywhere to start the surprise 👀";
+
+
+      started = false;
+
+
+      document.body.addEventListener(
+        "click",
+        retryMusic,
+        {
+          once: true
+        }
+      );
+
+    }
+
   }
+);
 
-  /*
-   * IMAGE DOES NOT APPEAR HERE.
-   *
-   * It waits until the music has completely finished.
-   */
 
-  music.addEventListener(
-    "ended",
-    revealImage,
-    { once: true }
-  );
-
-});
-
+/* =========================================
+   RETRY MUSIC
+========================================= */
 
 async function retryMusic() {
 
@@ -465,15 +628,26 @@ async function retryMusic() {
 
     await music.play();
 
-    intro.classList.add("hidden");
-    loading.innerHTML =
-      '<div class="loader"></div>Something is happening... 👀';
 
-    music.addEventListener(
-      "ended",
-      revealImage,
-      { once: true }
+    intro.classList.add(
+      "hidden"
     );
+
+
+    loading.innerHTML =
+      '<div class="loader"></div>' +
+      'Something is happening... 👀';
+
+
+    setTimeout(
+      () => {
+
+        revealImage();
+
+      },
+      3000
+    );
+
 
   } catch (error) {
 
@@ -485,65 +659,112 @@ async function retryMusic() {
 }
 
 
+/* =========================================
+   REVEAL IMAGE
+========================================= */
+
 function revealImage() {
 
-  loading.classList.remove("show");
+  loading.classList.remove(
+    "show"
+  );
+
 
   createParticles();
 
-  setTimeout(() => {
 
-    reveal.classList.add("show");
+  /*
+   * Give particles a short head start.
+   */
 
-  }, 350);
+  setTimeout(
+    () => {
+
+      reveal.classList.add(
+        "show"
+      );
+
+    },
+    350
+  );
 
 }
 
+
+/* =========================================
+   CREATE PARTICLES
+========================================= */
 
 function createParticles() {
 
   particles.innerHTML = "";
 
+
   const count = 55;
 
-  for (let i = 0; i < count; i++) {
+
+  for (
+    let i = 0;
+    i < count;
+    i++
+  ) {
 
     const particle =
-      document.createElement("span");
+      document.createElement(
+        "span"
+      );
 
-    particle.className = "particle";
+
+    particle.className =
+      "particle";
+
 
     particle.style.left =
       "50vw";
 
+
     particle.style.top =
       "50vh";
+
 
     particle.style.setProperty(
       "--x",
       Math.random() * 100 + "vw"
     );
 
+
     particle.style.setProperty(
       "--y",
       Math.random() * 100 + "vh"
     );
 
+
     particle.style.animationDelay =
       Math.random() * 0.25 + "s";
 
+
+    const size =
+      Math.random() * 7 + 4;
+
+
     particle.style.width =
-      (Math.random() * 7 + 4) + "px";
+      size + "px";
+
 
     particle.style.height =
-      particle.style.width;
+      size + "px";
 
-    particles.appendChild(particle);
+
+    particles.appendChild(
+      particle
+    );
 
   }
 
 }
+
 </script>
 
 </body>
 </html>
+
